@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- w3_school-link -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- bootstrap-icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <!-- custom-css -->
+    <link rel="stylesheet" href="css/admin.css">
+
+    <!-- google-icon -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <title>Create Product</title>
+    <style>
+        body {
+            color: #999;
+            background: #FCEBF1 !important;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .form-control {
+            min-height: 41px;
+            box-shadow: none;
+            border-color: #e1e1e1;
+        }
+
+        .form-control:focus {
+            border-color: black;
+        }
+
+        .form-control,
+        .btn {
+            border-radius: 3px;
+        }
+
+        .form-header {
+            margin: -30px -30px 20px;
+            padding: 30px 30px 10px;
+            text-align: center;
+            background: black;
+            border-bottom: 1px solid #eee;
+            color: #fff;
+        }
+
+        .form-header h2 {
+            font-size: 34px;
+            font-weight: bold;
+            margin: 0 0 10px;
+            font-family: 'Courgette', sans-serif;
+        }
+
+        .form-header p {
+            margin: 20px 0 15px;
+            font-size: 17px;
+            line-height: normal;
+            font-family: 'Courgette', sans-serif;
+        }
+
+        .create-product-form {
+            width: 590px;
+            margin: 0 auto;
+            padding: 30px 0;
+        }
+
+        .create-product-form form {
+            color: #999;
+            border-radius: 3px;
+            margin-bottom: 15px;
+            background: #f0f0f0;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+
+        .create-product-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .create-product-form label {
+            font-weight: normal;
+            font-size: 14px;
+        }
+
+        .create-product-form input[type="checkbox"] {
+            position: relative;
+            top: 1px;
+        }
+
+        .create-product-form .btn {
+            font-size: 16px;
+            font-weight: bold;
+            background: black;
+            border: none;
+            min-width: 200px;
+        }
+
+        .create-product-form .btn:hover,
+        .create-product-form .btn:focus {
+            background: #00b073 !important;
+            outline: none;
+        }
+
+        .create-product-form a {
+            color: black;
+        }
+
+        .create-product-form a:hover {
+            text-decoration: underline;
+        }
+        /* popup css */
+        
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 100px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 40% !important;
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+
+    }
+  </style>
+
+    </style>
+</head>
+
+<body style="background: rgb(223, 223, 233);">
+    <%-include("sidebar")-%>
+
+    <div id="createCategory" class="modal">
+        <div class="modal-content">
+          <span class="close" style="text-align: right;">&times;</span>
+          <div>
+            <h2>Create Category</h2>
+            <div class="form-group">
+                <input type="hidden" id="select">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name">
+              </div>
+            <button class='btn btn-dark createCategory' style="width: 100%;">Create</button>
+          </div>
+        </div>
+    </div>
+
+    <div id="createSize" class="modal">
+        <div class="modal-content">
+          <span class="close-btn-size" style="text-align: right;">&times;</span>
+          <div>
+            <h2>Create size</h2>
+            <div class="form-group">
+                <input type="hidden" id="selectSize">
+                <label for="name">Size</label>
+                <input type="text" class="form-control" id="size">
+              </div>
+            <button class='btn btn-dark createSize' style="width: 100%;">Create</button>
+          </div>
+        </div>
+    </div>
+
+    <div id="createColor" class="modal">
+        <div class="modal-content">
+          <span class="close-color" style="text-align: right;">&times;</span>
+          <div>
+            <h2>Create color</h2>
+            <div class="form-group">
+                <input type="hidden" id="selectColor">
+                <label for="name">Color</label>
+                <input type="text" class="form-control" id="color">
+              </div>
+            <button class='btn btn-dark createColor' style="width: 100%;">Create</button>
+          </div>
+        </div>
+    </div>
+
+    <div id="main">
+        <%-include("admin-header")-%>
+        <!-- body-start -->
+        <div class="create-product-form">
+            <form action="/api-products" method="post" encType="multipart/form-data">
+                <div class="form-header">
+                    <h2>Create Product
+                    </h2>
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" name="title" required="required">
+                </div>
+                <!-- <div class="form-group">
+                    <label>Category</label>
+                    <input type="text" class="form-control" name="categories" required="required">
+                </div> -->
+
+                <label>Category</label>
+                <div class="row">
+                    <div class="col-8">
+                        <select class="form-select mb-3" aria-label=".form-select-lg" id="categ" name="categories">
+                            <option selected>Open select category</option>
+                            <% category.forEach(function(catg){ %>
+                                <option value="<%=catg.name%>"><%=catg.name%></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <a href="#" class="category" style="background: black;
+                        color: white;
+                        padding-top: 9px;
+                        padding-bottom: 9px;
+                        padding-right: 27px;
+                        padding-left: 27px;
+                        position: relative;
+                        top: 8px;">Create category</a>
+                    </div>
+                </div>
+                
+                <label>Size</label>
+                <div class="row">
+                    <div class="col-8">
+                        <select class="form-select mb-3" aria-label=".form-select-lg" id="pSize" name="size">
+                            <option selected>Open select size</option>
+                            <% size.forEach(function(sz){ %>
+                                <option value="<%=sz.size%>"><%=sz.size%></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <a href="#" class="size" style="background: black;
+                        color: white;
+                        padding-top: 9px;
+                        padding-bottom: 9px;
+                        padding-right: 38px;
+                        padding-left: 45px;
+                        position: relative;
+                        top: 8px;">Create Size</a>
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                    <label>Size</label>
+                    <input type="text" class="form-control" name="size" required="required"></input>
+                </div> -->
+                
+                <!-- <div class="form-group">
+                    <label>Color</label>
+                    <input type="text" class="form-control" name="color" required="required"></input>
+                </div> -->
+
+                <label>Color</label>
+                <div class="row">
+                    <div class="col-8">
+                        <select class="form-select mb-3" aria-label=".form-select-lg" id="pColor" name="color">
+                            <option selected>Open select color</option>
+                            <% color.forEach(function(clr){ %>
+                            <option value="<%=clr.color%>"><%=clr.color%></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <a href="#" class="color" style="background: black;
+                        color: white;
+                        padding-top: 9px;
+                        padding-bottom: 9px;
+                        padding-right: 40px;
+                        padding-left: 36px;
+                        position: relative;
+                        top: 8px;">Create Color</a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Price</label>
+                    <input type="text" class="form-control" name="price" required="required"></input>
+                </div>
+                <div class="form-group">
+                    <label>Image</label>
+                    <!-- <input type="text" class="form-control" name="img" required="required"></input> -->
+                    <input type="file" class="form-control" name="img" />
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea type="text" class="form-control" name="desc" required="required"></textarea>
+                </div>
+                <!-- <div class="form-group">
+                    <label>Image</label>
+                    <input type="file" class="form-control" name="file" required="required" id="file">
+                </div> -->
+                <div class="form-group" style="text-align: center">
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">Add Product</button>
+                </div>
+            </form>
+            <div class="text-center small">Click to login <a href="/login">Click here</a></div>
+        </div>
+        <!-- body-end -->
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- w3school -->
+    <script>
+        function w3_open() {
+            document.getElementById("main").style.marginLeft = "25%";
+            document.getElementById("mySidebar").style.width = "25%";
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("openNav").style.display = 'none';
+        }
+        function w3_close() {
+            document.getElementById("main").style.marginLeft = "0%";
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("openNav").style.display = "inline-block";
+        }
+    </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/custom-js/create.js"></script>
+
+</body>
+
+</html>

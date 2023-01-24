@@ -1,0 +1,27 @@
+
+.user-sidebar{
+    background-image: linear-gradient(to right, rgb(226, 100, 100) , rgb(228, 130, 130) ,rgb(230, 128, 80),rgb(236, 153, 114));
+    border-radius: 12px 0px 0px 12px;
+}
+
+.text-muted-color{
+    color: rgb(151, 151, 151);
+}
+
+.user-info-div{
+    padding: 12% 30% 0% 30%;
+}
+.round-corner{
+    border-radius: 12px !important;
+}
+.user-info-div >.row{
+    border: 1px solid rgb(241, 239, 239);
+
+}
+
+@media only screen and (max-width:1150px) {
+    .user-info-div{
+        padding: 5% 15% 0% 15%;
+
+    }
+}

@@ -1,0 +1,21 @@
+tbody tr{
+    color: rgb(68, 67, 67);
+}
+.badge-out{
+    padding: 7px ;
+    border-radius: 11px;  
+    background:linear-gradient(to right,  #f7990b , #f1ac6b);
+}
+.badge-in{
+    padding: 7px ;
+    border-radius: 11px; 
+    background:linear-gradient(to right,  #50227c , #c62cd4);
+}
+
+.print-btn{
+    background:linear-gradient(to right,  #00f7ff , #2ff889);
+    color: white;
+    border-radius: 15px;
+    font-size: 12px;
+    padding: 4px 25px;
+}

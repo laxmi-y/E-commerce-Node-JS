@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/vendors/font-awesome/css/all.min.css">
+    <link href="assets/vendors/aos/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/css/logout.css">
+    <script src="assets/vendors/jquery/jquery.min.js"></script>
+    <script src="assets/js/loader.js"></script>
+</head>
+<body>
+    <div class="edica-loader"></div>
+    <header class="edica-header edica-landing-header">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="/"><h5 style="color: #307930;">Blogy</h5></a>
+                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#edicaMainNav" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="edicaMainNav">
+                    <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/createblog">Create</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blogs">Blogs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/my-blog">My Blog</a>
+                        </li>
+                        <%if(user){%>
+                            <%if(user.role == "admin"){%>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/users">Users</a>
+                                </li>
+                            <%}%>
+                        <%}%>
+
+                    </ul>
+                    <%if(user){%>
+                        <ul class="navbar-nav mt-2 mt-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout">Logout</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav mt-2 mt-lg-0">
+                            <li class="nav-item" style="color: #307930;">
+                                <i class="fa fa-user" aria-hidden="true">
+                                    <span id="userName"><%=user.name%></span>
+                                </i>
+                            </li>
+                        </ul>
+
+                    <%} else { %>
+                        <ul class="navbar-nav mt-2 mt-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login">Login</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav mt-2 mt-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/register">Register</a>
+                            </li>
+                        </ul>
+                    <%}%>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <script src="assets/vendors/popper.js/popper.min.js"></script>
+    <script src="assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/vendors/aos/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        AOS.init({
+            duration: 2000
+        });
+    </script>
+</body>
+</html>

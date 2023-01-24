@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog</title>
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/vendors/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/vendors/aos/aos.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/vendors/jquery/jquery.min.js"></script>
+    <script src="assets/js/loader.js"></script>
+    <link rel="stylesheet" href="create-blog/css/style.css">
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: "#mytextarea",
+            menubar: false,
+            plugins: 'lists image code',
+            toolbar: 'numlist bullist| undo redo | styleselect | forecolor | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link image | code'
+        });
+    </script>
+</head>
+<body>
+    <%-include("../partials/navbar")%>
+    <div class="wrapper">
+        <div class="image-holder">
+            <img src="images/registration-form-8.jpg" alt="">
+        </div>
+        <div class="form-inner">
+            <form action="/create-blog" method="post" encType="multipart/form-data" id="bcreate-form">
+                <div class="form-header">
+                    <h3>Create Blog</h3>
+                    <img src="images/sign-up.png" alt="" class="sign-up-icon">
+                </div>
+                <div class="form-group">
+                    <label for="">Blog Name</label>
+                    <input required="true" type="text" class="form-control" data-validation="length alphanumeric" data-validation-length="3-12" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="">Image</label>
+                    <input type="file" required="true" class="form-control" name="image">
+                </div>
+                <div class="form-group">
+                    <label for="">Content</label>
+                    <textarea type="text" class="form-control" id="mytextarea" name="content" minlength="200"></textarea>
+                </div>
+                <button type="submit" id="blogCreate">Create</button>
+            </form>
+        </div>
+        
+    </div>
+    <%-include("../partials/footer")-%>
+
+    <script src="assets/vendors/popper.js/popper.min.js"></script>
+    <script src="assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/vendors/aos/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/create-blog.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000
+        });
+      </script>
+</body>
+
+</html>

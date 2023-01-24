@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My blog</title>
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/vendors/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/vendors/aos/aos.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/vendors/jquery/jquery.min.js"></script>
+    <script src="assets/js/loader.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="stylesheet" href="/css/my-blog.css">
+</head>
+<body>
+    <%-include("../partials/navbar")%>
+    <main class="blog">
+        <div class="container">
+            <h4 class="m-3 mt-5 pt-3 border-top" style="text-align: center;">List of blogs create by own</h4> 
+            <div class="table-content-table">
+              <table class="w-100">
+              <tr class="table-thead-tr">
+                <th>Image</th>
+                <th>Name</th> 
+                <th class="th-actions">Actions</th>
+              </tr>
+              <% blogs.forEach(function(blog){ %>
+              <tr class="table-tbody-tr">
+                <td>
+                  <img src="<%=blog.image%>">      
+                </td>
+                <td><%=blog.name%></td>
+                <td>
+                  <a href="/blog/<%=blog._id%>" class="btn btn-danger">View</a>
+                  <a href="/delete-blog/<%=blog._id%>" class="btn btn-secondary">Delete</a>
+                  <a href="/edit-blog/<%=blog._id%>" class="btn btn-success">Edit</a>
+                </td>
+              </tr>
+              <% }) %>
+            </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/vendors/popper.js/popper.min.js"></script>
+    <script src="assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/vendors/aos/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000
+        });
+      </script>
+</body>
+
+</html>

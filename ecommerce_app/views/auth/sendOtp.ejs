@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Courgette|Pacifico:400,700">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<style>
+    body{
+    background:#eee;
+    }
+
+    .bgWhite{
+    background:white;
+    box-shadow:0px 3px 6px 0px #cacaca;
+    }
+
+    .title{
+    font-weight:600;
+    margin-top:20px;
+    font-size:24px
+    }
+
+    .customBtn{
+    border-radius:0px;
+    padding:10px;
+    }
+
+    form input{
+    display:inline-block;
+    width:50px;
+    height:50px;
+    text-align:center;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <div class="col-sm-12 mt-5 bgWhite">
+                  <div class="title">
+                    Verify OTP
+                  </div>
+                  <% if (messages.error) { %>
+                    <p style="color:red">
+                        <%- messages.error %>
+                    </p>
+                    <% } %>
+                  <form action="/api/auth/register" method="post" class="mt-5">
+                    <input class="otp" name="first" type="text" oninput='digitValidate(this)' onkeyup='tabChange(1)' maxlength=1 >
+                    <input class="otp" name="second" type="text" oninput='digitValidate(this)' onkeyup='tabChange(2)' maxlength=1 >
+                    <input class="otp" name="third" type="text" oninput='digitValidate(this)' onkeyup='tabChange(3)' maxlength=1 >
+                    <input class="otp" name="forth" type="text" oninput='digitValidate(this)'onkeyup='tabChange(4)' maxlength=1 >
+                    <hr class="mt-4">
+                    <button type="submit" class='btn btn-success btn-block mt-4 mb-4 customBtn'>Verify</button>
+                </form>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+    <script>
+        let digitValidate = function(ele){
+            console.log(ele.value);
+            ele.value = ele.value.replace(/[^0-9]/g,'');
+        }
+
+        let tabChange = function(val){
+            let ele = document.querySelectorAll('input');
+            if(ele[val-1].value != ''){
+            ele[val].focus()
+            }else if(ele[val-1].value == ''){
+            ele[val-2].focus()
+            }   
+        }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+			<!--===============================================================================================-->
+		</body>
+
+</html>

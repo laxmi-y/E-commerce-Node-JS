@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blogs</title>
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/vendors/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/vendors/aos/aos.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/vendors/jquery/jquery.min.js"></script>
+    <script src="assets/js/loader.js"></script>
+</head>
+<body>
+    <%-include("../partials/navbar")%>
+    <main class="blog">
+        <div class="container">
+            <h1 class="edica-page-title" data-aos="fade-up">Blogs</h1>
+            <section class="featured-posts-section">
+                <div class="row">
+                    <%blogs.forEach(function(blog){ %>
+                        <div class="col-md-4 fetured-post blog-post" data-aos="fade-right">
+                            <div class="blog-post-thumbnail-wrapper">
+                                <a href="/blog/<%=blog._id%>"><img src="<%=blog.image%>" alt="blog post"></a>
+                            </div>
+                            <p class="blog-post-category">Blog post</p>
+                            <a href="/blog/<%=blog._id%>" class="blog-post-permalink">
+                                <h6 class="blog-post-title"><%=blog.name%></h6>
+                            </a>
+                        </div>
+                    <% }) %>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <%-include("../partials/footer")-%>
+
+    <script src="assets/vendors/popper.js/popper.min.js"></script>
+    <script src="assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/vendors/aos/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000
+        });
+      </script>
+</body>
+
+</html>
